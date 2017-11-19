@@ -8,7 +8,7 @@ namespace airport_reg
 {
     class Flight
     {
-        public int Number; //Номер рейса
+        private int Number; //Номер рейса
         private FlightType Type; //Тип рейса
         private FlightStatus Status; //Статус рейса
 

@@ -8,25 +8,25 @@ namespace airport_reg
 {
     class Schedule
     {
-        public Flight FlightList; //Список рейсов
+        private List<Flight> FlightList; //Список рейсов
         private int Departures; //Количество отправленных рейсов
 
 
         //Регистрация всех рейсов завершена?
-        public bool IsFinished()
+        private bool IsFinished()
         {
             //TODO
             return true;
         }
 
         //Открыть регистрацию на рейс
-        public void Open(int FlightNumber)
+        private void Open(int FlightNumber)
         {
             //TODO
         }
 
         //Закрыть регистрацию на рейс
-        public void Close(int FlightNumber)
+        private void Close(int FlightNumber)
         {
             //TODO
         }
