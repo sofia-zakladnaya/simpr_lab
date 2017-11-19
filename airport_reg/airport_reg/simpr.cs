@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Threading;
 using System.Runtime.InteropServices;
 
-namespace WindowsApplication4 // не забудьте поменять на свой namespace //
+namespace airport_reg // не забудьте поменять на свой namespace //
 {
 
     public class MyHookClass : NativeWindow
