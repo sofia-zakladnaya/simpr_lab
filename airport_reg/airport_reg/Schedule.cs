@@ -7,6 +7,7 @@ namespace airport_reg
     class Schedule
     {
         private List<Flight> FlightList; //Список рейсов
+        private int N; //Общее количество рейсов
         private int Departures; //Количество отправленных рейсов
 
 
@@ -28,5 +29,12 @@ namespace airport_reg
         {
             //TODO
         }
+
+
+        public Schedule(int FlightNum)
+        {
+            //TODO
+        }
     }
+
 }
