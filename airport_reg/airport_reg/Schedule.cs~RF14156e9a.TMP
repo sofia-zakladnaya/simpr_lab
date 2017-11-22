@@ -6,7 +6,8 @@ namespace airport_reg
 {
     class Schedule
     {
-        public List<Flight> FlightList; //Список рейсов
+        private List<Flight> FlightList; //Список рейсов
+        private int N; //Общее количество рейсов
         private int Departures; //Количество отправленных рейсов
 
 
@@ -33,17 +34,12 @@ namespace airport_reg
         public Schedule(int FlightNum)
         {
             //TODO
-            //Инициализируем генератор случайных чисел и список рейсов
             Random rand = new Random();
-            FlightList = new List<Flight>();
-
-            for(int i=0; i<FlightNum; i++)
+            for(int i=0; i<FlightNum;i++)
             {
-                //генерируем случайный рейс и заносим в список
-                Flight fl = new Flight(i + 1,rand);
+                Flight fl = new Flight(i + 1, rand);
                 FlightList.Add(fl);
             }
-            Departures = 0;
         }
     }
 

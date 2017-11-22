@@ -7,3 +7,13 @@ D:\11sem\simpr_lab\airport_reg\airport_reg\obj\Debug\airport_reg.Properties.Reso
 D:\11sem\simpr_lab\airport_reg\airport_reg\obj\Debug\airport_reg.csproj.GenerateResource.Cache
 D:\11sem\simpr_lab\airport_reg\airport_reg\obj\Debug\airport_reg.exe
 D:\11sem\simpr_lab\airport_reg\airport_reg\obj\Debug\airport_reg.pdb
+E:\SIMPR\simpr_lab\airport_reg\airport_reg\bin\Debug\airport_reg.exe.config
+E:\SIMPR\simpr_lab\airport_reg\airport_reg\bin\Debug\airport_reg.exe
+E:\SIMPR\simpr_lab\airport_reg\airport_reg\bin\Debug\airport_reg.pdb
+E:\SIMPR\simpr_lab\airport_reg\airport_reg\obj\Debug\airport_reg.csprojResolveAssemblyReference.cache
+E:\SIMPR\simpr_lab\airport_reg\airport_reg\obj\Debug\airport_reg.RegForm.resources
+E:\SIMPR\simpr_lab\airport_reg\airport_reg\obj\Debug\airport_reg.Properties.Resources.resources
+E:\SIMPR\simpr_lab\airport_reg\airport_reg\obj\Debug\airport_reg.csproj.GenerateResource.Cache
+E:\SIMPR\simpr_lab\airport_reg\airport_reg\obj\Debug\airport_reg.csproj.CoreCompileInputs.cache
+E:\SIMPR\simpr_lab\airport_reg\airport_reg\obj\Debug\airport_reg.exe
+E:\SIMPR\simpr_lab\airport_reg\airport_reg\obj\Debug\airport_reg.pdb
