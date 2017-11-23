@@ -5,7 +5,7 @@ namespace airport_reg
     public partial class RegForm : Form
     {
         MyHookClass simpr;
-        public RegFor()
+        public RegForm()
         {
             InitializeComponent();
         }
