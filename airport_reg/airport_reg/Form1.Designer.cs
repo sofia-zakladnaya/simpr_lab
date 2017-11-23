@@ -50,7 +50,7 @@
             this.lbFlightSchedule.FormattingEnabled = true;
             this.lbFlightSchedule.Location = new System.Drawing.Point(913, 33);
             this.lbFlightSchedule.Name = "lbFlightSchedule";
-            this.lbFlightSchedule.Size = new System.Drawing.Size(217, 225);
+            this.lbFlightSchedule.Size = new System.Drawing.Size(349, 225);
             this.lbFlightSchedule.TabIndex = 1;
             // 
             // tbTicketInfo
@@ -58,7 +58,7 @@
             this.tbTicketInfo.Location = new System.Drawing.Point(913, 376);
             this.tbTicketInfo.Multiline = true;
             this.tbTicketInfo.Name = "tbTicketInfo";
-            this.tbTicketInfo.Size = new System.Drawing.Size(217, 146);
+            this.tbTicketInfo.Size = new System.Drawing.Size(349, 146);
             this.tbTicketInfo.TabIndex = 2;
             // 
             // lbScheduleTitle
@@ -84,14 +84,14 @@
             this.textBox1.Location = new System.Drawing.Point(12, 535);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1118, 103);
+            this.textBox1.Size = new System.Drawing.Size(1250, 103);
             this.textBox1.TabIndex = 5;
             // 
             // RegForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1142, 646);
+            this.ClientSize = new System.Drawing.Size(1274, 646);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lbTicketInfoTitle);
             this.Controls.Add(this.lbScheduleTitle);
