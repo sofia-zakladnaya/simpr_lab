@@ -7,18 +7,22 @@ namespace airport_reg
     class Schedule
     {
         public List<Flight> FlightList; //Список рейсов
-        private int Departures; //Количество отправленных рейсов
+        public int Departures; //Количество отправленных рейсов
 
 
         //Регистрация всех рейсов завершена?
-        private bool IsFinished()
+        public bool IsFinished()
         {
-            //TODO
+            if(Departures<FlightList.Count)
+            {
+                return false;
+            }
+
             return true;
         }
 
         //Открыть регистрацию на рейс
-        private void Open(int FlightNumber)
+        public void Open(int FlightNumber)
         {
             //TODO
         }
