@@ -25,19 +25,19 @@ namespace airport_reg // не забудьте поменять на свой na
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         static extern uint RegisterWindowMessage(string lpString);
-        
-        
-        //public solver solv; // - пример включения класса "решателя"
-        
-        
-        uint simpr;
 
-        public MyHookClass(IntPtr hWnd)
+        public Airport solver;
+        uint simpr;
+        RegForm Win;
+        int time = 0;
+
+        public MyHookClass(IntPtr hWnd, RegForm f)
         {
             simpr = RegisterWindowMessage("MyMessage"); // регистрируем своё сообщение
             this.AssignHandle(hWnd);
-            // solv = new solver(); // пример создания элемента класса "решателя"
-
+            solver = new Airport();
+            Win = f;
+            //Win.DrawStart(solver);   Прописать свою отрисовку
         }
 
         protected override void WndProc(ref Message m) // в эту функцию приходят все сообщения от СИМПРА

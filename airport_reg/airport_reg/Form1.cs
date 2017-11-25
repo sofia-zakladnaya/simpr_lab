@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 //using System.Collections.Generic;
 
 namespace airport_reg
@@ -33,6 +34,8 @@ namespace airport_reg
             schTimer.Start();
 
         }
+
+      
 
         //Тик таймера
         private void schTimer_Tick(object sender, System.EventArgs e)
