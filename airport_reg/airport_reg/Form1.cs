@@ -27,7 +27,7 @@ namespace airport_reg
             dgSchedule.Columns[2].HeaderText = "Назначение";
             dgSchedule.Columns[3].HeaderText = "Статус";
             //Стартовое изображение
-            Draw(Application.StartupPath + "\\img\\start.png");
+            //Draw(Application.StartupPath + "\\img\\start.png");
             //Устанавливаем интервал в 5 секунд
             schTimer.Interval = 5000;
             //Запускаем таймер
