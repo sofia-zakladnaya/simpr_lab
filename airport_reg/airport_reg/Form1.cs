@@ -26,6 +26,8 @@ namespace airport_reg
             dgSchedule.Columns[1].HeaderText = "Тип";
             dgSchedule.Columns[2].HeaderText = "Назначение";
             dgSchedule.Columns[3].HeaderText = "Статус";
+            //Стартовое изображение
+            Draw(Application.StartupPath + "\\img\\start.png");
             //Устанавливаем интервал в 5 секунд
             schTimer.Interval = 5000;
             //Запускаем таймер
@@ -35,7 +37,12 @@ namespace airport_reg
 
         }
 
-      
+        //Отрисовка картинки из файла
+        public void Draw(string imgFile)
+        {
+            Bitmap img = new Bitmap(imgFile);
+            pbCurPicture.Image = img;
+        }
 
         //Тик таймера
         private void schTimer_Tick(object sender, System.EventArgs e)

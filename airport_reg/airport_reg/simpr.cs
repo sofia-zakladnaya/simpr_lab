@@ -38,6 +38,7 @@ namespace airport_reg // не забудьте поменять на свой na
             solver = new Airport();
             Win = f;
             //Win.DrawStart(solver);   Прописать свою отрисовку
+            Win.Draw(Application.StartupPath + "\\img\\start.png");
         }
 
         protected override void WndProc(ref Message m) // в эту функцию приходят все сообщения от СИМПРА

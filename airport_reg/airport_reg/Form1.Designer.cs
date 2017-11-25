@@ -46,13 +46,14 @@
             // 
             this.pbCurPicture.Location = new System.Drawing.Point(12, 7);
             this.pbCurPicture.Name = "pbCurPicture";
-            this.pbCurPicture.Size = new System.Drawing.Size(895, 515);
+            this.pbCurPicture.Size = new System.Drawing.Size(895, 556);
+            this.pbCurPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCurPicture.TabIndex = 0;
             this.pbCurPicture.TabStop = false;
             // 
             // tbTicketInfo
             // 
-            this.tbTicketInfo.Location = new System.Drawing.Point(913, 376);
+            this.tbTicketInfo.Location = new System.Drawing.Point(913, 417);
             this.tbTicketInfo.Multiline = true;
             this.tbTicketInfo.Name = "tbTicketInfo";
             this.tbTicketInfo.Size = new System.Drawing.Size(349, 146);
@@ -70,7 +71,7 @@
             // lbTicketInfoTitle
             // 
             this.lbTicketInfoTitle.AutoSize = true;
-            this.lbTicketInfoTitle.Location = new System.Drawing.Point(910, 360);
+            this.lbTicketInfoTitle.Location = new System.Drawing.Point(910, 401);
             this.lbTicketInfoTitle.Name = "lbTicketInfoTitle";
             this.lbTicketInfoTitle.Size = new System.Drawing.Size(120, 13);
             this.lbTicketInfoTitle.TabIndex = 4;
@@ -78,7 +79,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 535);
+            this.textBox1.Location = new System.Drawing.Point(12, 569);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -107,7 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1274, 646);
+            this.ClientSize = new System.Drawing.Size(1274, 684);
             this.Controls.Add(this.dgSchedule);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lbTicketInfoTitle);
