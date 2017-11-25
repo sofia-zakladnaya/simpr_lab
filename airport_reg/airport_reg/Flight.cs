@@ -9,9 +9,9 @@ namespace airport_reg
         public string Destination { get { return GetDestinationString(); } } //Назначение
         public string Status { get { return GetStatusString(); } } //Статус рейса
 
-        private FlightType type; //Тип рейса
-        private FlightDestination destination; //Назначение
-        private FlightStatus status; //Статус рейса
+        public FlightType type; //Тип рейса
+        public FlightDestination destination; //Назначение
+        public FlightStatus status; //Статус рейса
 
 
 

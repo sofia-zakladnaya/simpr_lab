@@ -36,6 +36,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dgSchedule = new System.Windows.Forms.DataGridView();
             this.scheduleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.schTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbCurPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSchedule)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scheduleBindingSource)).BeginInit();
@@ -80,6 +81,7 @@
             this.textBox1.Location = new System.Drawing.Point(12, 535);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(1250, 103);
             this.textBox1.TabIndex = 5;
             // 
@@ -95,6 +97,11 @@
             // scheduleBindingSource
             // 
             this.scheduleBindingSource.DataSource = typeof(airport_reg.Schedule);
+            // 
+            // schTimer
+            // 
+            this.schTimer.Interval = 2000;
+            this.schTimer.Tick += new System.EventHandler(this.schTimer_Tick);
             // 
             // RegForm
             // 
@@ -126,6 +133,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dgSchedule;
         private System.Windows.Forms.BindingSource scheduleBindingSource;
+        private System.Windows.Forms.Timer schTimer;
     }
 }
 
