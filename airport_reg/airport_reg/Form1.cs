@@ -10,12 +10,18 @@ namespace airport_reg
         {
             InitializeComponent();
             //генерация списка рейсов
-            Schedule sch = new Schedule(5);
+            Schedule sch = new Schedule(10);
             //Выводим список на форму
-            for(int i=0; i<sch.FlightList.Count;i++)
-            {
-                lbFlightSchedule.Items.Add(sch.FlightList[i].Number.ToString() + " "+sch.FlightList[i].GetTypeString()+" "+ sch.FlightList[i].GetDestinationString() + " "+sch.FlightList[i].GetStatusString());
-            }
+            BindingSource src = new BindingSource();
+            
+            dgSchedule.AutoGenerateColumns = true;
+            src.DataSource = sch.FlightList;
+            dgSchedule.DataSource = src;
+            dgSchedule.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
+            dgSchedule.Columns[0].HeaderText = "№";
+            dgSchedule.Columns[1].HeaderText = "Тип";
+            dgSchedule.Columns[2].HeaderText = "Назначение";
+            dgSchedule.Columns[3].HeaderText = "Статус";
 
         }
     }

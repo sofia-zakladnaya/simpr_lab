@@ -4,37 +4,42 @@ namespace airport_reg
 {
     class Flight
     {
-        public int Number; //Номер рейса
-        private FlightType Type; //Тип рейса
-        private FlightStatus Status; //Статус рейса
-        private FlightDestination Destination; //Назначение
+        public int Number { get; set; }//Номер рейса
+        public string Type { get { return GetTypeString(); } } //Тип рейса
+        public string Destination { get { return GetDestinationString(); } } //Назначение
+        public string Status { get { return GetStatusString(); } } //Статус рейса
+
+        private FlightType type; //Тип рейса
+        private FlightDestination destination; //Назначение
+        private FlightStatus status; //Статус рейса
+
 
 
 
         //Рейс международный?
         private bool IsInternational()
         {
-            return (Type==FlightType.International);
+            return (type==FlightType.International);
         }
 
         //Регистрация открыта?
         private bool IsOpen()
         {
-            return (Status==FlightStatus.RegistrationOpen);
+            return (status==FlightStatus.RegistrationOpen);
         }
 
         //Изменить статус рейса
         private FlightStatus OpenReg(FlightStatus NewStatus)
         {
-            Status = NewStatus;
+            status = NewStatus;
 
-            return Status;
+            return status;
         }
 
        //Расшифровки перечислений 
         public string GetStatusString()
         {
-            switch (Status)
+            switch (status)
             {
                 case FlightStatus.RegistrationOpen:
                     return "Регистрация";
@@ -49,7 +54,7 @@ namespace airport_reg
 
        public string GetTypeString()
         {
-            switch (Type)
+            switch (type)
             {
                 case FlightType.International:
                     return "Международный";
@@ -60,7 +65,7 @@ namespace airport_reg
 
         public string GetDestinationString()
         {
-            switch (Destination)
+            switch (destination)
             {
                 case FlightDestination.Moscow:
                     return "Москва";
@@ -98,18 +103,18 @@ namespace airport_reg
         {
             Number = number;
             //случайный тип рейса
-            Type = (FlightType)rand.Next(0, 2);
+            type = (FlightType)rand.Next(0, 2);
             //случайный город(в зависимости от типа)
-            if(Type==FlightType.Domestic)
+            if(type==FlightType.Domestic)
             {
-                Destination = (FlightDestination)rand.Next(0,7);
+                destination = (FlightDestination)rand.Next(0,7);
             }
             else
             {
-                Destination = (FlightDestination)rand.Next(7, 14);
+                destination = (FlightDestination)rand.Next(7, 14);
             }
 
-            Status=FlightStatus.NoRegistration;
+            status=FlightStatus.NoRegistration;
 
         }
 
