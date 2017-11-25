@@ -33,7 +33,7 @@
             this.tbTicketInfo = new System.Windows.Forms.TextBox();
             this.lbScheduleTitle = new System.Windows.Forms.Label();
             this.lbTicketInfoTitle = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbLog = new System.Windows.Forms.TextBox();
             this.dgSchedule = new System.Windows.Forms.DataGridView();
             this.scheduleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.schTimer = new System.Windows.Forms.Timer(this.components);
@@ -76,14 +76,14 @@
             this.lbTicketInfoTitle.TabIndex = 4;
             this.lbTicketInfoTitle.Text = "Информация о билете";
             // 
-            // textBox1
+            // tbLog
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 535);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(1250, 103);
-            this.textBox1.TabIndex = 5;
+            this.tbLog.Location = new System.Drawing.Point(12, 535);
+            this.tbLog.Multiline = true;
+            this.tbLog.Name = "tbLog";
+            this.tbLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbLog.Size = new System.Drawing.Size(1250, 103);
+            this.tbLog.TabIndex = 5;
             // 
             // dgSchedule
             // 
@@ -109,7 +109,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1274, 646);
             this.Controls.Add(this.dgSchedule);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbLog);
             this.Controls.Add(this.lbTicketInfoTitle);
             this.Controls.Add(this.lbScheduleTitle);
             this.Controls.Add(this.tbTicketInfo);
@@ -130,7 +130,7 @@
         private System.Windows.Forms.TextBox tbTicketInfo;
         private System.Windows.Forms.Label lbScheduleTitle;
         private System.Windows.Forms.Label lbTicketInfoTitle;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbLog;
         private System.Windows.Forms.DataGridView dgSchedule;
         private System.Windows.Forms.BindingSource scheduleBindingSource;
         private System.Windows.Forms.Timer schTimer;

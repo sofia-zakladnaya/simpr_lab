@@ -31,7 +31,7 @@ namespace airport_reg // не забудьте поменять на свой na
         uint simpr;
         RegForm Win;
         int time = 0;
-
+        int fc = 0; //счётчик рейсов(для теста)
         public MyHookClass(IntPtr hWnd, RegForm f)
         {
             simpr = RegisterWindowMessage("MyMessage"); // регистрируем своё сообщение
@@ -56,48 +56,244 @@ namespace airport_reg // не забудьте поменять на свой na
 
                 if (wparamhi == 0)//условия
                 {
-                    if (wparamlo == 1)// таблица 1 
+
+                    if (wparamlo == 1)// таблица 1 (расписание)
                     {
                         switch (lParam)
                         {
-                          
+                            //Регистрация на все рейсы завершена?
+                            case 1:
+                                {
+                                    if (fc < Airport.FlightNum)
+                                    {
+                                        m.Result = new IntPtr(0);
+                                        Win.Log("Регистрация на все рейсы завершена?");
+                                        fc++;
+                                    }
+                                    else
+                                    {
+                                        m.Result = new IntPtr(1);
+                                    }
+                                    break;
+                                }
 
                         }
 
                     }
-                    else if (wparamlo == 2)// таблица 2 
+                    else if (wparamlo == 2)// таблица 2 (пассажир)
                     {
-                        
-                    }
-                    else if (wparamlo == 3)// таблица 3
-                    {
+                        switch (lParam)
+                        {
+                            //Регистрация на рейс открыта?
+                            case 1:
+                                {
+                                    if (fc < Airport.FlightNum)
+                                    {
+                                        m.Result = new IntPtr(0);
+                                        fc++;
+                                    }
+                                    else
+                                    {
+                                        m.Result = new IntPtr(1);
+                                    }
+                                    break;
+                                }
+                            //Рейс международный?
+                            case 2:
+                                {
+                                    m.Result = new IntPtr(1);
+                                    break;
+                                }
+                            //Есть ручная кладь?
+                            case 3:
+                                {
+                                    m.Result = new IntPtr(1);
+                                    break;
+                                }
+                            //Билет с багажом?
+                            case 4:
+                                {
+                                    m.Result = new IntPtr(1);
+                                    break;
+                                }
+                            //Есть багаж?
+                            case 5:
+                                {
+                                    m.Result = new IntPtr(1);
+                                    break;
+                                }
+                            //Билет с перевозкой животных?
+                            case 6:
+                                {
+                                    m.Result = new IntPtr(1);
+                                    break;
+                                }
+                            //Есть животные?
+                            case 7:
+                                {
+                                    m.Result = new IntPtr(1);
+                                    break;
+                                }
+                            
 
+                        }
                     }
-                    else if (wparamlo == 4)// таблица 4 
+                    else if (wparamlo == 3)// таблица 3 (багаж)
                     {
+                        switch (lParam)
+                        {
+                            //Багаж хрупкий?
+                            case 1:
+                                {
+                                    m.Result = new IntPtr(1);
+                                    break;
+                                }
+                            //Есть животные?
+                            case 2:
+                                {
+                                    m.Result = new IntPtr(1);
+                                    break;
+                                }               
 
+                        }
+                    }
+                    else if (wparamlo == 4)// таблица 4 (животные)
+                    {
+                        switch (lParam)
+                        {
+                            //Крупное?
+                            case 1:
+                                {
+                                    m.Result = new IntPtr(1);
+                                    break;
+                                }
+                            //Требуется успокоительное?
+                            case 2:
+                                {
+                                    m.Result = new IntPtr(1);
+                                    break;
+                                }
+
+                        }
                     }
                 }
                 else if (wparamhi == 1)//действия
                 {
                     if (wparamlo == 1)// таблица 1 
                     {
-                       
+                        switch (lParam)
+                        {
+                            //Начать обслуживание пассажира
+                            case 1:
+                                {
+                                    
+                                    break;
+                                }
+
+                        }
                     }
                     else if (wparamlo == 2)// таблица 2 
                     {
+                        switch (lParam)
+                        {
+                            //Отправить в кассу для возврата/обмена билета
+                            case 1:
+                                {
+                                   
+                                    break;
+                                }
+                            //Присвоить посадочное место
+                            case 2:
+                                {
+                                    
+                                    break;
+                                }
+                            //Зарегистрировать ручную кладь
+                            case 3:
+                                {
+                                    
+                                    break;
+                                }
+                            //Отправить на посадку на международные рейсы
+                            case 4:
+                                {
+                                    
+                                    break;
+                                }
+                            //Отправить на посадку на внутренние рейсы
+                            case 5:
+                                {
+                                    
+                                    break;
+                                }
+                            //Начать регистрацию багажа
+                            case 6:
+                                {
+                                   
+                                    break;
+                                }
+                            //Начать регистрацию животных
+                            case 7:
+                                {
+                                    
+                                    break;
+                                }
+
+                        }
                     }
                     else if (wparamlo == 3)// таблица 3
                     {
+                        switch (lParam)
+                        {
+                            //Упаковать
+                            case 1:
+                                {
+                                    
+                                    break;
+                                }
+                            //Отправить на погрузку
+                            case 2:
+                                {
+                                   
+                                    break;
+                                }
+                            //Начать регистрацию животных
+                            case 3:
+                                {
+                                   
+                                    break;
+                                }                         
 
+                        }
                     }
                     else if (wparamlo == 4)// таблица 4 
                     {
+                        switch (lParam)
+                        {
+                            //Дать успокоительное
+                            case 1:
+                                {
+                                   
+                                    break;
+                                }
+                            //Отправить в салон
+                            case 2:
+                                {
+                                   
+                                    break;
+                                }
+                            //Отправить в багаж
+                            case 3:
+                                {
+                                   
+                                    break;
+                                }
 
+                        }
                     }
 
-                    Application.DoEvents();
-                Thread.Sleep(1000); // если у нас есть визуальное отображение, то задержку можно установить здесь                    
+                Application.DoEvents();
+                //Thread.Sleep(1000); // если у нас есть визуальное отображение, то задержку можно установить здесь                    
                 m.Result = new IntPtr(1); // ответом на запрос действия со стороны СИМПР должна быть единица
                 }
             }
