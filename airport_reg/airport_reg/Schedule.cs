@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace airport_reg
 {
-    class Schedule
+    public class Schedule
     {
         public List<Flight> FlightList; //Список рейсов
         public int Departures; //Количество отправленных рейсов

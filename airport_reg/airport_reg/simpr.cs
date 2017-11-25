@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace airport_reg // не забудьте поменять на свой namespace //
 {
@@ -57,52 +58,46 @@ namespace airport_reg // не забудьте поменять на свой na
                 {
                     if (wparamlo == 1)// таблица 1 
                     {
-                        if (lParam == 1)// таблица 1 условие 1
+                        switch (lParam)
                         {
-                            m.Result = new IntPtr(1); // вернуть условие 1 = TRUE
+                          
+
                         }
-                        else if (lParam == 2)// таблица 1 условие 2
-                        {
-                            m.Result = new IntPtr(0); // вернуть условие 2 = FALSE
-                        }
+
                     }
                     else if (wparamlo == 2)// таблица 2 
                     {
-                        if (lParam == 1)// таблица 2 условие 1
-                        {
-                        }
-                        else if (lParam == 2)// таблица 2 условие 2
-                        {
-                        }
+                        
+                    }
+                    else if (wparamlo == 3)// таблица 3
+                    {
+
+                    }
+                    else if (wparamlo == 4)// таблица 4 
+                    {
+
                     }
                 }
                 else if (wparamhi == 1)//действия
                 {
                     if (wparamlo == 1)// таблица 1 
                     {
-                        if (lParam == 1)// таблица 1 действие 1
-                        {
-                            // действие
-                        }
-                        else if (lParam == 2)// таблица 1 действие 2
-                        {
-                            // действие
-                        }
+                       
                     }
                     else if (wparamlo == 2)// таблица 2 
                     {
-                        if (lParam == 1)// таблица 2 действие 1
-                        {
-                            // действие
-                        }
-                        else if (lParam == 2)// таблица 2 действие 2
-                        {
-                            // действие
-                        }
+                    }
+                    else if (wparamlo == 3)// таблица 3
+                    {
+
+                    }
+                    else if (wparamlo == 4)// таблица 4 
+                    {
+
                     }
 
-                Application.DoEvents();
-               // Thread.Sleep(300); // если у нас есть визуальное отображение, то задержку можно установить здесь                    
+                    Application.DoEvents();
+                Thread.Sleep(1000); // если у нас есть визуальное отображение, то задержку можно установить здесь                    
                 m.Result = new IntPtr(1); // ответом на запрос действия со стороны СИМПР должна быть единица
                 }
             }
