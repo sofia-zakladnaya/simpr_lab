@@ -21,6 +21,44 @@ namespace airport_reg
             return true;
         }
 
+        //Переключение рейсов
+        public void Switch()
+        {
+            bool fl = false;
+            for (int i = Departures; i < FlightList.Count; i++)
+            {
+                fl = false;
+                switch (FlightList[i].status)
+                {
+                    case FlightStatus.NoRegistration:
+                        {
+                            FlightList[i].status = FlightStatus.RegistrationOpen;
+                            fl = true;
+                            break;
+                        }
+                    case FlightStatus.RegistrationOpen:
+                        {
+                            FlightList[i].status = FlightStatus.RegistrationClose;
+                            break;
+                        }
+                    case FlightStatus.RegistrationClose:
+                        {
+                            FlightList[i].status = FlightStatus.Departed;
+                            Departures++;
+                            break;
+                        }
+
+                }
+                //открыли новый рейс
+                if(fl)
+                {
+                    break;
+                }
+                
+            }
+            
+        }
+
         //Открыть регистрацию на рейс
         public void Open(int FlightNumber)
         {

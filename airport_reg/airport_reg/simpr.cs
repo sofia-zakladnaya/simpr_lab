@@ -76,12 +76,13 @@ namespace airport_reg // не забудьте поменять на свой na
                                     else
                                     {
                                         Win.Log("Завершена");
-                                        Win.Log("Имитация завершена");
+                                        
                                         m.Result = new IntPtr(1);
                                     }
                                     break;
 
                                 }
+                                
 
 
                             }
@@ -216,6 +217,11 @@ namespace airport_reg // не забудьте поменять на свой na
                                             Win.Log("Начать обслуживание пассажира");
                                             break;
                                         }
+                                default:
+                                    {
+                                        Win.Log("Имитация завершена");
+                                        break;
+                                    }
 
                             }
                             break;
