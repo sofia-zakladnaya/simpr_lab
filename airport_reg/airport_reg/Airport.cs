@@ -5,19 +5,17 @@ namespace airport_reg
     
     public class Airport
     {
-        public static int FlightNum = 10;
+        public static int FlightNum = 3;
         public static int TimeOut = 5000;
 
-        //public RegForm win;
-        public Schedule schedule;
-        public Bitmap img;
+        public string ImgDir; //Папка с изображениями
+        public Bitmap img; //текущее изображение
         
         public Airport()
         {
-            //Создаём расписание
-            schedule = new Schedule(FlightNum);
+            ImgDir = Application.StartupPath + "\\img\\";
             //Задаём стартовое изображение
-            string path = Application.StartupPath + "\\img\\start.png";
+            string path = ImgDir + "start.png";
             img = new Bitmap(path);
             
         }

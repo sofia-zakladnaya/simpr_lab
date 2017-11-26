@@ -67,17 +67,15 @@ namespace airport_reg // не забудьте поменять на свой na
                                 case 1:
                                 {
                                     Win.Log("Регистрация на все рейсы завершена?");
-                                    if (fc < Airport.FlightNum)
+                                    if (Win.schedule.IsFinished())
                                     {
-                                        fc++;
-                                        Win.Log("Не завершена: fc="+fc.ToString());                                        
-                                        m.Result = new IntPtr(0);
+                                            Win.Log("Завершена");
+                                            m.Result = new IntPtr(1);                                                                                   
                                     }
                                     else
                                     {
-                                        Win.Log("Завершена");
-                                        
-                                        m.Result = new IntPtr(1);
+                                        Win.Log("Не завершена");
+                                        m.Result = new IntPtr(0);
                                     }
                                     break;
 

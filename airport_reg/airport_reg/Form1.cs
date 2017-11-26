@@ -8,12 +8,12 @@ namespace airport_reg
     public partial class RegForm : Form
     {
         MyHookClass simpr;
-        Schedule schedule;
+        public Schedule schedule;
         int tik;
         public RegForm()
         {
             InitializeComponent();
-            //simpr = new MyHookClass(this.Handle, this);
+            simpr = new MyHookClass(this.Handle, this);
             ////генерация списка рейсов
             schedule = new Schedule(Airport.FlightNum);
             ////Выводим список на форму
@@ -29,7 +29,7 @@ namespace airport_reg
             //dgSchedule.Columns[2].HeaderText = "Назначение";
             //dgSchedule.Columns[3].HeaderText = "Статус";
             ////Устанавливаем интервал в 5 секунд
-            //schTimer.Interval = 5000;
+            schTimer.Interval = 5000;
             //Запускаем таймер
             
             Log("Имитация началась...");
@@ -61,7 +61,6 @@ namespace airport_reg
             if (schedule.IsFinished())
             {
                 schTimer.Stop();
-                Log("Имитация закончена");
                 //TODO: отрисовка
                 return;
             }
