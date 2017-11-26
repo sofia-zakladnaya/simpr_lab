@@ -28,8 +28,8 @@ namespace airport_reg
             //dgSchedule.Columns[1].HeaderText = "Тип";
             //dgSchedule.Columns[2].HeaderText = "Назначение";
             //dgSchedule.Columns[3].HeaderText = "Статус";
-            ////Устанавливаем интервал в 5 секунд
-            schTimer.Interval = 5000;
+            ////Устанавливаем интервал в 10 секунд
+            schTimer.Interval = 10000;
             //Запускаем таймер
             
             Log("Имитация началась...");
