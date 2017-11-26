@@ -46,22 +46,23 @@
             // 
             this.pbCurPicture.Location = new System.Drawing.Point(12, 7);
             this.pbCurPicture.Name = "pbCurPicture";
-            this.pbCurPicture.Size = new System.Drawing.Size(81, 55);
+            this.pbCurPicture.Size = new System.Drawing.Size(774, 588);
+            this.pbCurPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCurPicture.TabIndex = 0;
             this.pbCurPicture.TabStop = false;
             // 
             // tbTicketInfo
             // 
-            this.tbTicketInfo.Location = new System.Drawing.Point(913, 376);
+            this.tbTicketInfo.Location = new System.Drawing.Point(425, 614);
             this.tbTicketInfo.Multiline = true;
             this.tbTicketInfo.Name = "tbTicketInfo";
-            this.tbTicketInfo.Size = new System.Drawing.Size(349, 146);
+            this.tbTicketInfo.Size = new System.Drawing.Size(361, 146);
             this.tbTicketInfo.TabIndex = 2;
             // 
             // lbScheduleTitle
             // 
             this.lbScheduleTitle.AutoSize = true;
-            this.lbScheduleTitle.Location = new System.Drawing.Point(910, 9);
+            this.lbScheduleTitle.Location = new System.Drawing.Point(9, 598);
             this.lbScheduleTitle.Name = "lbScheduleTitle";
             this.lbScheduleTitle.Size = new System.Drawing.Size(43, 13);
             this.lbScheduleTitle.TabIndex = 3;
@@ -70,7 +71,7 @@
             // lbTicketInfoTitle
             // 
             this.lbTicketInfoTitle.AutoSize = true;
-            this.lbTicketInfoTitle.Location = new System.Drawing.Point(910, 360);
+            this.lbTicketInfoTitle.Location = new System.Drawing.Point(422, 598);
             this.lbTicketInfoTitle.Name = "lbTicketInfoTitle";
             this.lbTicketInfoTitle.Size = new System.Drawing.Size(120, 13);
             this.lbTicketInfoTitle.TabIndex = 4;
@@ -78,20 +79,20 @@
             // 
             // tbLog
             // 
-            this.tbLog.Location = new System.Drawing.Point(12, 68);
+            this.tbLog.Location = new System.Drawing.Point(792, 7);
             this.tbLog.Multiline = true;
             this.tbLog.Name = "tbLog";
             this.tbLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbLog.Size = new System.Drawing.Size(889, 570);
+            this.tbLog.Size = new System.Drawing.Size(308, 753);
             this.tbLog.TabIndex = 5;
             // 
             // dgSchedule
             // 
             this.dgSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgSchedule.Location = new System.Drawing.Point(913, 25);
+            this.dgSchedule.Location = new System.Drawing.Point(12, 614);
             this.dgSchedule.Name = "dgSchedule";
             this.dgSchedule.ReadOnly = true;
-            this.dgSchedule.Size = new System.Drawing.Size(349, 318);
+            this.dgSchedule.Size = new System.Drawing.Size(407, 146);
             this.dgSchedule.TabIndex = 6;
             // 
             // scheduleBindingSource
@@ -107,7 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1274, 646);
+            this.ClientSize = new System.Drawing.Size(1112, 772);
             this.Controls.Add(this.dgSchedule);
             this.Controls.Add(this.tbLog);
             this.Controls.Add(this.lbTicketInfoTitle);

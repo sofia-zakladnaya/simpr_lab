@@ -14,6 +14,8 @@ namespace airport_reg
         {
             InitializeComponent();
             simpr = new MyHookClass(this.Handle, this);
+            //Стартовая картинка
+            
             //генерация списка рейсов
             schedule = new Schedule(Airport.FlightNum);
             //Выводим список на форму
@@ -27,6 +29,12 @@ namespace airport_reg
             schedule.FlightList[0].status = FlightStatus.RegistrationOpen;
             schTimer.Start();
 
+        }
+
+        //Вывод изображения
+        public void Draw(Bitmap img)
+        {
+            pbCurPicture.Image = img;
         }
         
         //Вывод сведений о билете
