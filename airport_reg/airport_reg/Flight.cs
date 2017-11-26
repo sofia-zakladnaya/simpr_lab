@@ -17,13 +17,13 @@ namespace airport_reg
 
 
         //Рейс международный?
-        private bool IsInternational()
+        public bool IsInternational()
         {
             return (type==FlightType.International);
         }
 
         //Регистрация открыта?
-        private bool IsOpen()
+        public bool IsOpen()
         {
             return (status==FlightStatus.RegistrationOpen);
         }

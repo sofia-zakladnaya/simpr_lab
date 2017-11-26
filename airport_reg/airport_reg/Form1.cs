@@ -19,10 +19,12 @@ namespace airport_reg
             //Выводим список на форму
             TableUpdate();
           
-            //Устанавливаем интервал в 10 секунд
-            schTimer.Interval = 10000;
+            //Устанавливаем интервал в 20 секунд
+            schTimer.Interval = 20000;
             //Запускаем таймер            
             Log("Имитация началась...");
+            //Открываем регистрацию на первый рейс
+            schedule.FlightList[0].status = FlightStatus.RegistrationOpen;
             schTimer.Start();
 
         }

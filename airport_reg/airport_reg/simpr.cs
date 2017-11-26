@@ -96,7 +96,14 @@ namespace airport_reg // не забудьте поменять на свой na
                                 case 1:
                                     {
                                         Win.Log("Регистрация на рейс открыта?");
-                                        m.Result = new IntPtr(1);
+                                        if (Win.schedule.FlightList[solver.pass.Ticket.FlightNumber].IsOpen())
+                                        {
+                                            m.Result = new IntPtr(1);
+                                        }
+                                        else
+                                        {
+                                            m.Result = new IntPtr(0);
+                                        }
 
                                         break;
                                     }
@@ -104,42 +111,85 @@ namespace airport_reg // не забудьте поменять на свой na
                                 case 2:
                                     {
                                         Win.Log("Рейс международный?");
-                                        m.Result = new IntPtr(1);
+                                        
+                                        if (Win.schedule.FlightList[solver.pass.Ticket.FlightNumber - 1].IsInternational())
+                                        {
+                                            m.Result = new IntPtr(1);
+                                        }
+                                        else
+                                        {
+                                            m.Result = new IntPtr(0);
+                                        }
                                         break;
                                     }
                                 //Есть ручная кладь?
                                 case 3:
                                     {
                                         Win.Log("Есть ручная кладь?");
-                                        m.Result = new IntPtr(1);
+                                        if (solver.pass.HandLuggage)
+                                        {
+                                            m.Result = new IntPtr(1);
+                                        }
+                                        else
+                                        {
+                                            m.Result = new IntPtr(0);
+                                        }
                                         break;
                                     }
                                 //Билет с багажом?
                                 case 4:
                                     {
                                         Win.Log("Билет с багажом?");
-                                        m.Result = new IntPtr(1);
+                                        if (solver.pass.Ticket.WithBaggage)
+                                        {
+                                            m.Result = new IntPtr(1);
+                                        }
+                                        else
+                                        {
+                                            m.Result = new IntPtr(0);
+                                        }
                                         break;
                                     }
                                 //Есть багаж?
                                 case 5:
                                     {
                                         Win.Log("Есть багаж?");
-                                        m.Result = new IntPtr(1);
+                                        if (solver.pass.HaveBaggage())
+                                        {
+                                            m.Result = new IntPtr(1);
+                                        }
+                                        else
+                                        {
+                                            m.Result = new IntPtr(0);
+                                        }
                                         break;
                                     }
                                 //Билет с перевозкой животных?
                                 case 6:
                                     {
                                         Win.Log("Билет с перевозкой животных?");
-                                        m.Result = new IntPtr(1);
+                                        if (solver.pass.Ticket.WithPets)
+                                        {
+                                            m.Result = new IntPtr(1);
+                                        }
+                                        else
+                                        {
+                                            m.Result = new IntPtr(0);
+                                        }
                                         break;
                                     }
                                 //Есть животные?
                                 case 7:
                                     {
                                         Win.Log("Есть животные?");
-                                        m.Result = new IntPtr(1);
+                                        if (solver.pass.HavePet())
+                                        {
+                                            m.Result = new IntPtr(1);
+                                        }
+                                        else
+                                        {
+                                            m.Result = new IntPtr(0);
+                                        }
                                         break;
                                     }
                             }
@@ -156,14 +206,28 @@ namespace airport_reg // не забудьте поменять на свой na
                                 case 1:
                                     {
                                         Win.Log("Багаж хрупкий?");
-                                        m.Result = new IntPtr(1);
+                                        if (solver.pass.Baggage.IsFragile())
+                                        {
+                                            m.Result = new IntPtr(1);
+                                        }
+                                        else
+                                        {
+                                            m.Result = new IntPtr(0);
+                                        }
                                         break;
                                     }
                                 //Есть животные?
                                 case 2:
                                     {
                                         Win.Log("Есть животные?");
-                                        m.Result = new IntPtr(1);
+                                        if (solver.pass.HavePet())
+                                        {
+                                            m.Result = new IntPtr(1);
+                                        }
+                                        else
+                                        {
+                                            m.Result = new IntPtr(0);
+                                        }
                                         break;
                                     }
 
@@ -180,14 +244,28 @@ namespace airport_reg // не забудьте поменять на свой na
                                 case 1:
                                     {
                                         Win.Log("Крупное?");
-                                        m.Result = new IntPtr(1);
+                                        if (solver.pass.Pet.IsBig())
+                                        {
+                                            m.Result = new IntPtr(1);
+                                        }
+                                        else
+                                        {
+                                            m.Result = new IntPtr(0);
+                                        }
                                         break;
                                     }
                                 //Требуется успокоительное?
                                 case 2:
                                     {
-                                        Win.Log("Требуется успокоительное?");
-                                        m.Result = new IntPtr(1);
+                                        Win.Log("Требуется успокоительное?");                                       
+                                        if (solver.pass.Pet.IsTranquile())
+                                        {
+                                            m.Result = new IntPtr(1);
+                                        }
+                                        else
+                                        {
+                                            m.Result = new IntPtr(0);
+                                        }
                                         break;
                                     }
 
@@ -208,22 +286,24 @@ namespace airport_reg // не забудьте поменять на свой na
                             Win.Log("Таблица 1 - действия");
                             switch (lParam)
                             {
-                                    //Начать обслуживание пассажира
-                                    case 1:
-                                        {
-                                            //fc++;
-                                            Win.Log("Начать обслуживание пассажира");
-                                            //Генерация пассажира
-                                            Random rnd = new Random(DateTime.Now.Millisecond);
-                                            solver.PassCounter++; //Увеличиваем счётчик пассажиров
-                                            solver.pass = new Passenger(rnd.Next(1,Win.schedule.FlightList.Count),solver.PassCounter);
-                                            //вывод данных билета на форму
-                                            Win.PrintTicketInfo(solver.pass.Ticket);
-                                            break;
-                                        }
+                                //Начать обслуживание пассажира
+                                case 1:
+                                    {
+                                        //fc++;
+                                           
+                                        //Генерация пассажира
+                                        Random rnd = new Random(DateTime.Now.Millisecond);
+                                        solver.PassCounter++; //Увеличиваем счётчик пассажиров
+                                        solver.pass = new Passenger(rnd.Next(1,Win.schedule.FlightList.Count),solver.PassCounter);
+                                        Win.Log("Начать обслуживание пассажира " + solver.PassCounter.ToString());
+                                        //вывод данных билета на форму
+                                        Win.PrintTicketInfo(solver.pass.Ticket);
+                                        break;
+                                    }
                                 default:
                                     {
                                         Win.Log("Имитация завершена");
+                                       
                                         break;
                                     }
 

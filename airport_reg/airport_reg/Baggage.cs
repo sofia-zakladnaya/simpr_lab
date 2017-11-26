@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
 
 
 namespace airport_reg
@@ -9,7 +9,12 @@ namespace airport_reg
     {
         private bool Fragility; //Багаж хрупкий?
 
-        private bool IsFragile()
+        public Baggage()
+        {
+            Fragility = Passenger.Coin();
+        }
+
+        public bool IsFragile()
         {
             return Fragility;
         }

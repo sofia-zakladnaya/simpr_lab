@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 
 namespace airport_reg
 {
@@ -8,16 +8,25 @@ namespace airport_reg
         private bool Tranquility; //Животное легко переносит перелёты?
 
 
-        //Животное крупное?
-        private bool IsBig()
+        public Pet()
         {
-            return true;
+            Random rnd = new Random(DateTime.Now.Millisecond);
+
+            Size = (PetSize)rnd.Next(0, 2);
+            Tranquility = Passenger.Coin();
+        }
+
+        //Животное крупное?
+        public bool IsBig()
+        {
+            return (Size == PetSize.Big);
+           
         }
 
         //Животное легко переносит перелёты?
-        private bool IsTranquile()
+        public bool IsTranquile()
         {
-            return true;
+            return Tranquility;
         }
 
         //Регистрация животных

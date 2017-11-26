@@ -36,6 +36,17 @@ namespace airport_reg
 
         }
 
+        //Наличие багажа
+        public bool HaveBaggage()
+        {
+            return (Baggage != null);
+        }
+        //Наличие животных
+        public bool HavePet()
+        {
+            return (Pet != null);
+        }
+
         //Случайное логическое значение
         public static bool Coin()
         {
