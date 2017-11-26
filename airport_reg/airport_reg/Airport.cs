@@ -5,19 +5,20 @@ namespace airport_reg
     
     public class Airport
     {
-        const int FlightNum = 10;
-        const int TimeOut = 5000;
+        public static int FlightNum = 10;
+        public static int TimeOut = 5000;
 
         //public RegForm win;
         public Schedule schedule;
-        public Image img;
+        public Bitmap img;
         
         public Airport()
         {
             //Создаём расписание
             schedule = new Schedule(FlightNum);
             //Задаём стартовое изображение
-            img = new Bitmap(Application.StartupPath + "\\img\\start.png");
+            string path = Application.StartupPath + "\\img\\start.png";
+            img = new Bitmap(path);
             
         }
     }

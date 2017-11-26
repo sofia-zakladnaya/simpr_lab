@@ -2,7 +2,7 @@
 
 namespace airport_reg
 {
-    class Flight
+    public class Flight
     {
         public int Number { get; set; }//Номер рейса
         public string Type { get { return GetTypeString(); } } //Тип рейса

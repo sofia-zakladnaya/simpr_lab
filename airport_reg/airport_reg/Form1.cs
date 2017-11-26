@@ -13,29 +13,34 @@ namespace airport_reg
         public RegForm()
         {
             InitializeComponent();
-            //генерация списка рейсов
-            sch = new Schedule(10);
-            //Выводим список на форму
-            BindingSource src = new BindingSource();
-            
-            dgSchedule.AutoGenerateColumns = true;
-            src.DataSource = sch.FlightList;
-            dgSchedule.DataSource = src;
-            dgSchedule.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
-            dgSchedule.Columns[0].HeaderText = "№";
-            dgSchedule.Columns[1].HeaderText = "Тип";
-            dgSchedule.Columns[2].HeaderText = "Назначение";
-            dgSchedule.Columns[3].HeaderText = "Статус";
-            //Устанавливаем интервал в 5 секунд
-            schTimer.Interval = 5000;
-            //Запускаем таймер
-            tik = 0;
-            textBox1.Text = "Имитация началась... ";
-            schTimer.Start();
+            simpr = new MyHookClass(this.Handle, this);
+            ////генерация списка рейсов
+            //sch = new Schedule(10);
+            ////Выводим список на форму
+            //BindingSource src = new BindingSource();
+
+            //dgSchedule.AutoGenerateColumns = true;
+            //src.DataSource = sch.FlightList;
+            //dgSchedule.DataSource = src;
+            //dgSchedule.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
+            //dgSchedule.Columns[0].HeaderText = "№";
+            //dgSchedule.Columns[1].HeaderText = "Тип";
+            //dgSchedule.Columns[2].HeaderText = "Назначение";
+            //dgSchedule.Columns[3].HeaderText = "Статус";
+            ////Устанавливаем интервал в 5 секунд
+            //schTimer.Interval = 5000;
+            ////Запускаем таймер
+            //tik = 0;
+            Log("Имитация началась...");
+            //schTimer.Start();
 
         }
 
-      
+        //Запись в лог
+        public void Log(string message)
+        {
+            tbLog.Text += message+Environment.NewLine;
+        }
 
         //Тик таймера
         private void schTimer_Tick(object sender, System.EventArgs e)
@@ -44,7 +49,7 @@ namespace airport_reg
             if (sch.IsFinished())
             {
                 schTimer.Stop();
-                textBox1.Text += Environment.NewLine + "Имитация закончена";
+                Log("Имитация закончена");
                 //TODO: отрисовка
                 return;
             }
