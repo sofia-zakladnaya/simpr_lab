@@ -59,6 +59,14 @@ namespace airport_reg
             
         }
 
+        //Случайный рейс из списка
+        public Flight RandomFlight()
+        {
+            Random rnd = new Random(DateTime.Now.Millisecond);
+            int i = rnd.Next(0, FlightList.Count);
+
+            return FlightList[i];
+        }
         //Открыть регистрацию на рейс
         public void Open(int FlightNumber)
         {

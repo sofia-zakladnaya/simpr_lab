@@ -3,11 +3,22 @@ using System.Collections.Generic;
 
 namespace airport_reg
 {
-    class Ticket
+    public class Ticket
     {
-        private Flight Flight; //Рейс
-        private bool WithBaggage; //Входит ли в билет багаж
-        private bool WithPets; //Входит ли в билет перевозка животных
+        public int Number; //Номер билета
+        public int FlightNumber; //Рейс
+        public bool WithBaggage; //Входит ли в билет багаж
+        public bool WithPets; //Входит ли в билет перевозка животных
+
+        //Билет на заданный рейс и со случайными параметрами
+        public Ticket(int flightnumber, int number)
+        {
+            Number = number;
+            FlightNumber = flightnumber;
+            WithBaggage = Passenger.Coin();
+            WithPets = Passenger.Coin();
+        }
+
 
         //Регистрация открыта?
         private bool CheckRegStatus()
@@ -15,16 +26,30 @@ namespace airport_reg
             return true; 
         }
 
-        //Багаж оплачен?(false, если есть неоплаченный багаж)
-        private bool CheckBaggage()
+        //Багаж оплачен?
+        public string CheckBaggage()
         {
-            return true;
+            if(WithBaggage)
+            {
+                return "+";
+            }
+            else
+            {
+                return "-";
+            }
         }
 
-        //Животные оплачены?(false, если есть неоплаченные животные)
-        private bool CheckPets()
+        //Животные оплачены?
+        public string CheckPets()
         {
-            return true;
+            if (WithPets)
+            {
+                return "+";
+            }
+            else
+            {
+                return "-";
+            }
         }
     }
 }

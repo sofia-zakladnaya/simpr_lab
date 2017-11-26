@@ -14,27 +14,27 @@ namespace airport_reg
         {
             InitializeComponent();
             simpr = new MyHookClass(this.Handle, this);
-            ////генерация списка рейсов
+            //генерация списка рейсов
             schedule = new Schedule(Airport.FlightNum);
-            ////Выводим список на форму
+            //Выводим список на форму
             TableUpdate();
-            //BindingSource src = new BindingSource();
-
-            //dgSchedule.AutoGenerateColumns = true;
-            //src.DataSource = sch.FlightList;
-            //dgSchedule.DataSource = src;
-            //dgSchedule.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
-            //dgSchedule.Columns[0].HeaderText = "№";
-            //dgSchedule.Columns[1].HeaderText = "Тип";
-            //dgSchedule.Columns[2].HeaderText = "Назначение";
-            //dgSchedule.Columns[3].HeaderText = "Статус";
-            ////Устанавливаем интервал в 10 секунд
+          
+            //Устанавливаем интервал в 10 секунд
             schTimer.Interval = 10000;
-            //Запускаем таймер
-            
+            //Запускаем таймер            
             Log("Имитация началась...");
             schTimer.Start();
 
+        }
+        
+        //Вывод сведений о билете
+        public void PrintTicketInfo(Ticket ticket)
+        {
+            tbTicketInfo.Clear();
+            tbTicketInfo.Text += ("Номер билета: " + ticket.Number.ToString()+ Environment.NewLine);
+            tbTicketInfo.Text += ("Номер рейса: " + ticket.FlightNumber.ToString() + Environment.NewLine);            
+            tbTicketInfo.Text += ("Перевозка багажа: " + ticket.CheckBaggage()  + Environment.NewLine);
+            tbTicketInfo.Text += ("Перевозка животных: " + ticket.CheckPets() + Environment.NewLine);
         }
 
         //Запись в лог

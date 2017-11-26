@@ -2,7 +2,7 @@
 
 namespace airport_reg
 {
-    class Pet
+    public class Pet
     {
         private PetSize Size; //Размер животного
         private bool Tranquility; //Животное легко переносит перелёты?

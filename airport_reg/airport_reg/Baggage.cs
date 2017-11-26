@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace airport_reg
 {
-    class Baggage
+    public class Baggage
     {
         private bool Fragility; //Багаж хрупкий?
 

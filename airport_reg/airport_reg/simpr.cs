@@ -27,7 +27,7 @@ namespace airport_reg // не забудьте поменять на свой na
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         static extern uint RegisterWindowMessage(string lpString);
 
-        //public Airport solver;
+        public Airport solver;
         uint simpr_cond;
         uint simpr_act;
         RegForm Win;
@@ -38,7 +38,7 @@ namespace airport_reg // не забудьте поменять на свой na
             simpr_cond = 49788;//RegisterWindowMessage("MyMessage"); // регистрируем своё сообщение
             simpr_act = 49773; RegisterWindowMessage("MyMessage1");
             this.AssignHandle(hWnd);
-            //solver = new Airport();
+            solver = new Airport();
             Win = f;
             //Win.DrawStart(solver);   Прописать свою отрисовку
         }
@@ -211,8 +211,14 @@ namespace airport_reg // не забудьте поменять на свой na
                                     //Начать обслуживание пассажира
                                     case 1:
                                         {
-                                            fc++;
+                                            //fc++;
                                             Win.Log("Начать обслуживание пассажира");
+                                            //Генерация пассажира
+                                            Random rnd = new Random(DateTime.Now.Millisecond);
+                                            solver.PassCounter++; //Увеличиваем счётчик пассажиров
+                                            solver.pass = new Passenger(rnd.Next(1,Win.schedule.FlightList.Count),solver.PassCounter);
+                                            //вывод данных билета на форму
+                                            Win.PrintTicketInfo(solver.pass.Ticket);
                                             break;
                                         }
                                 default:
