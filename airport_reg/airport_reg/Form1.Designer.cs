@@ -46,7 +46,7 @@
             // 
             this.pbCurPicture.Location = new System.Drawing.Point(12, 7);
             this.pbCurPicture.Name = "pbCurPicture";
-            this.pbCurPicture.Size = new System.Drawing.Size(895, 515);
+            this.pbCurPicture.Size = new System.Drawing.Size(81, 55);
             this.pbCurPicture.TabIndex = 0;
             this.pbCurPicture.TabStop = false;
             // 
@@ -78,11 +78,11 @@
             // 
             // tbLog
             // 
-            this.tbLog.Location = new System.Drawing.Point(12, 535);
+            this.tbLog.Location = new System.Drawing.Point(12, 68);
             this.tbLog.Multiline = true;
             this.tbLog.Name = "tbLog";
             this.tbLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbLog.Size = new System.Drawing.Size(1250, 103);
+            this.tbLog.Size = new System.Drawing.Size(889, 570);
             this.tbLog.TabIndex = 5;
             // 
             // dgSchedule

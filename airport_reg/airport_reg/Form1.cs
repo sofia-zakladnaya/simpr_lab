@@ -31,7 +31,7 @@ namespace airport_reg
             //schTimer.Interval = 5000;
             ////Запускаем таймер
             //tik = 0;
-            //tbLog.Text = "Имитация началась... ";
+            Log("Имитация началась...");
             //schTimer.Start();
 
         }
@@ -39,7 +39,7 @@ namespace airport_reg
         //Запись в лог
         public void Log(string message)
         {
-            tbLog.Text += Environment.NewLine + message;
+            tbLog.Text += message+Environment.NewLine;
         }
 
         //Тик таймера
@@ -49,7 +49,7 @@ namespace airport_reg
             if (sch.IsFinished())
             {
                 schTimer.Stop();
-                tbLog.Text += Environment.NewLine + "Имитация закончена";
+                Log("Имитация закончена");
                 //TODO: отрисовка
                 return;
             }
