@@ -31,12 +31,12 @@ namespace airport_reg // не забудьте поменять на свой na
         uint simpr_cond;
         uint simpr_act;
         RegForm Win;
-        int fc = 0; //счётчик рейсов(для теста)
+        //int fc = 0; //счётчик рейсов(для теста)
 
         public MyHookClass(IntPtr hWnd, RegForm f)
         {
-            simpr_cond = 49788;//RegisterWindowMessage("MyMessage"); // регистрируем своё сообщение
-            simpr_act = 49773; RegisterWindowMessage("MyMessage1");
+            simpr_cond = 49824;//RegisterWindowMessage("MyMessage"); // регистрируем своё сообщение
+            simpr_act = 49833; //RegisterWindowMessage("MyMessage1");
             this.AssignHandle(hWnd);
             solver = new Airport();
             Win = f;
@@ -294,16 +294,24 @@ namespace airport_reg // не забудьте поменять на свой na
                                         //Генерация пассажира
                                         Random rnd = new Random(DateTime.Now.Millisecond);
                                         solver.PassCounter++; //Увеличиваем счётчик пассажиров
-                                        solver.pass = new Passenger(rnd.Next(1,Win.schedule.FlightList.Count),solver.PassCounter);
+                                        //Выбираем случайный рейс
+                                        int randf = rnd.Next(1, Win.schedule.FlightList.Count);
+                                        //создаём пассажира с билетом на выбранный рейс
+                                        solver.pass = new Passenger(Win.schedule.FlightList[randf],solver.PassCounter);
                                         Win.Log("Начать обслуживание пассажира " + solver.PassCounter.ToString());
                                         //вывод данных билета на форму
                                         Win.PrintTicketInfo(solver.pass.Ticket);
+                                        //Отрисовка пассажира
+                                        solver.PassImage();
+                                        Win.Draw(solver.img);
                                         break;
                                     }
                                 default:
                                     {
                                         Win.Log("Имитация завершена");
-                                       
+                                        //Возвращаем стартовое изображение
+                                        solver.StartImage();
+                                        Win.Draw(solver.img);
                                         break;
                                     }
 
@@ -320,6 +328,9 @@ namespace airport_reg // не забудьте поменять на свой na
                                 case 1:
                                     {
                                         Win.Log("Отправить в кассу для возврата/обмена билета");
+                                        //Возвращаем стартовое изображение
+                                        solver.StartImage();
+                                        Win.Draw(solver.img);
                                         break;
                                     }
                                 //Присвоить посадочное место
@@ -332,30 +343,45 @@ namespace airport_reg // не забудьте поменять на свой na
                                 case 3:
                                     {
                                         Win.Log("Зарегистрировать ручную кладь");
+                                        //Отрисовка
+                                        solver.HandRegImage();
+                                        Win.Draw(solver.img);
                                         break;
                                     }
                                 //Отправить на посадку на международные рейсы
                                 case 4:
                                     {
                                         Win.Log("Отправить на посадку на международные рейсы");
+                                        //Отрисовка
+                                        solver.BoardImage();
+                                        Win.Draw(solver.img);
                                         break;
                                     }
                                 //Отправить на посадку на внутренние рейсы
                                 case 5:
                                     {
                                         Win.Log("Отправить на посадку на внутренние рейсы");
+                                        //Отрисовка
+                                        solver.BoardImage();
+                                        Win.Draw(solver.img);
                                         break;
                                     }
                                 //Начать регистрацию багажа
                                 case 6:
                                     {
                                         Win.Log("Начать регистрацию багажа");
+                                        //Отрисовка
+                                        solver.RegBaggageImage();
+                                        Win.Draw(solver.img);
                                         break;
                                     }
                                 //Начать регистрацию животных
                                 case 7:
                                     {
                                         Win.Log("Начать регистрацию животных");
+                                        //Отрисовка
+                                        solver.RegPetImage();
+                                        Win.Draw(solver.img);
                                         break;
                                     }
                             }
@@ -371,12 +397,27 @@ namespace airport_reg // не забудьте поменять на свой na
                                 case 1:
                                     {
                                         Win.Log("Упаковать");
+                                        //Отрисовка
+                                        solver.PackImage();
+                                        Win.Draw(solver.img);
                                         break;
                                     }
                                 //Отправить на погрузку
                                 case 2:
                                     {
                                         Win.Log("Отправить на погрузку");
+                                        if(solver.pass.HavePet())
+                                        {
+                                            //Отрисовка
+                                            solver.RegPetImage();
+                                            
+                                        }
+                                        else
+                                        {
+                                            //Отрисовка
+                                            solver.StartImage();
+                                        }
+                                        Win.Draw(solver.img);
                                         break;
                                     }
                                 //Начать регистрацию животных
@@ -399,18 +440,27 @@ namespace airport_reg // не забудьте поменять на свой na
                                 case 1:
                                     {
                                         Win.Log("Дать успокоительное");
+                                        //Отрисовка
+                                        solver.TrPetImage();
+                                        Win.Draw(solver.img);
                                         break;
                                     }
                                 //Отправить в салон
                                 case 2:
                                     {
                                         Win.Log("Отправить в салон");
+                                        //Отрисовка
+                                        solver.StartImage();
+                                        Win.Draw(solver.img);
                                         break;
                                     }
                                 //Отправить в багаж
                                 case 3:
                                     {
                                         Win.Log("Отправить в багаж");
+                                        //Отрисовка
+                                        solver.StartImage();
+                                        Win.Draw(solver.img);
                                         break;
                                     }
 
@@ -419,7 +469,7 @@ namespace airport_reg // не забудьте поменять на свой na
                         }
                 }
                 Application.DoEvents();
-                Thread.Sleep(1000); // если у нас есть визуальное отображение, то задержку можно установить здесь                    
+                Thread.Sleep(2000); // если у нас есть визуальное отображение, то задержку можно установить здесь                    
                 m.Result = new IntPtr(1); // ответом на запрос действия со стороны СИМПР должна быть единица
 
             }

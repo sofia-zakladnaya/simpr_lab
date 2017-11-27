@@ -7,13 +7,15 @@ namespace airport_reg
     {
         public int Number; //Номер билета
         public int FlightNumber; //Рейс
+        public FlightType Type; //Тип рейса
         public bool WithBaggage; //Входит ли в билет багаж
         public bool WithPets; //Входит ли в билет перевозка животных
 
         //Билет на заданный рейс и со случайными параметрами
-        public Ticket(int flightnumber, int number)
+        public Ticket(int flightnumber, int number,FlightType type)
         {
             Number = number;
+            Type = type;
             FlightNumber = flightnumber;
             WithBaggage = Passenger.Coin();
             WithPets = Passenger.Coin();

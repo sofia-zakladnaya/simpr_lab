@@ -12,9 +12,9 @@ namespace airport_reg
         public Pet Pet; //Животные
 
         //Пассажир с билетом на рейс с заданным номером и случайными параметрами
-        public Passenger(int flightnum,int num)
+        public Passenger(Flight flight,int num)
         {
-            Ticket = new Ticket(flightnum,num);
+            Ticket = new Ticket(flight.Number,num,flight.type);
             HandLuggage = Coin();
             if(Coin())
             {
