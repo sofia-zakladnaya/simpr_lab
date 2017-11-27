@@ -96,12 +96,14 @@ namespace airport_reg // не забудьте поменять на свой na
                                 case 1:
                                     {
                                         Win.Log("Регистрация на рейс открыта?");
-                                        if (Win.schedule.FlightList[solver.pass.Ticket.FlightNumber].IsOpen())
+                                        if (Win.schedule.FlightList[solver.pass.Ticket.FlightNumber-1].IsOpen())
                                         {
+                                            Win.Log("-Регистрация открыта");
                                             m.Result = new IntPtr(1);
                                         }
                                         else
                                         {
+                                            Win.Log("-Регистрация закрыта");
                                             m.Result = new IntPtr(0);
                                         }
 
@@ -114,10 +116,12 @@ namespace airport_reg // не забудьте поменять на свой na
                                         
                                         if (Win.schedule.FlightList[solver.pass.Ticket.FlightNumber - 1].IsInternational())
                                         {
+                                            Win.Log("-Международный рейс");
                                             m.Result = new IntPtr(1);
                                         }
                                         else
                                         {
+                                            Win.Log("-Внутренний рейс");
                                             m.Result = new IntPtr(0);
                                         }
                                         break;
@@ -128,10 +132,12 @@ namespace airport_reg // не забудьте поменять на свой na
                                         Win.Log("Есть ручная кладь?");
                                         if (solver.pass.HandLuggage)
                                         {
+                                            Win.Log("-Есть ручная кладь");
                                             m.Result = new IntPtr(1);
                                         }
                                         else
                                         {
+                                            Win.Log("-Нет ручной клади");
                                             m.Result = new IntPtr(0);
                                         }
                                         break;
@@ -142,10 +148,12 @@ namespace airport_reg // не забудьте поменять на свой na
                                         Win.Log("Билет с багажом?");
                                         if (solver.pass.Ticket.WithBaggage)
                                         {
+                                            Win.Log("-Билет с багажом");
                                             m.Result = new IntPtr(1);
                                         }
                                         else
                                         {
+                                            Win.Log("-Билет без багажа");
                                             m.Result = new IntPtr(0);
                                         }
                                         break;
@@ -156,10 +164,12 @@ namespace airport_reg // не забудьте поменять на свой na
                                         Win.Log("Есть багаж?");
                                         if (solver.pass.HaveBaggage())
                                         {
+                                            Win.Log("-Есть багаж");
                                             m.Result = new IntPtr(1);
                                         }
                                         else
                                         {
+                                            Win.Log("-Есть багаж");
                                             m.Result = new IntPtr(0);
                                         }
                                         break;
@@ -170,10 +180,12 @@ namespace airport_reg // не забудьте поменять на свой na
                                         Win.Log("Билет с перевозкой животных?");
                                         if (solver.pass.Ticket.WithPets)
                                         {
+                                            Win.Log("-Билет с животными");
                                             m.Result = new IntPtr(1);
                                         }
                                         else
                                         {
+                                            Win.Log("-Билет без животных");
                                             m.Result = new IntPtr(0);
                                         }
                                         break;
@@ -184,10 +196,12 @@ namespace airport_reg // не забудьте поменять на свой na
                                         Win.Log("Есть животные?");
                                         if (solver.pass.HavePet())
                                         {
+                                            Win.Log("-Есть животные");
                                             m.Result = new IntPtr(1);
                                         }
                                         else
                                         {
+                                            Win.Log("-Нет животных");
                                             m.Result = new IntPtr(0);
                                         }
                                         break;
@@ -292,12 +306,12 @@ namespace airport_reg // не забудьте поменять на свой na
                                         //fc++;
                                            
                                         //Генерация пассажира
-                                        Random rnd = new Random(DateTime.Now.Millisecond);
+                                        //Random rnd = new Random(DateTime.Now.Millisecond);
                                         solver.PassCounter++; //Увеличиваем счётчик пассажиров
                                         //Выбираем случайный рейс
-                                        int randf = rnd.Next(1, Win.schedule.FlightList.Count);
+                                        
                                         //создаём пассажира с билетом на выбранный рейс
-                                        solver.pass = new Passenger(Win.schedule.FlightList[randf],solver.PassCounter);
+                                        solver.pass = new Passenger(Win.schedule.RandomFlight(),solver.PassCounter);
                                         Win.Log("Начать обслуживание пассажира " + solver.PassCounter.ToString());
                                         //вывод данных билета на форму
                                         Win.PrintTicketInfo(solver.pass.Ticket);
@@ -327,7 +341,8 @@ namespace airport_reg // не забудьте поменять на свой na
                                 //Отправить в кассу для возврата/обмена билета
                                 case 1:
                                     {
-                                        Win.Log("Отправить в кассу для возврата/обмена билета");
+                                        
+                                         Win.Log("Отправить в кассу для возврата/обмена билета");
                                         //Возвращаем стартовое изображение
                                         solver.StartImage();
                                         Win.Draw(solver.img);
@@ -469,7 +484,7 @@ namespace airport_reg // не забудьте поменять на свой na
                         }
                 }
                 Application.DoEvents();
-                Thread.Sleep(2000); // если у нас есть визуальное отображение, то задержку можно установить здесь                    
+                Thread.Sleep(3000); // если у нас есть визуальное отображение, то задержку можно установить здесь                    
                 m.Result = new IntPtr(1); // ответом на запрос действия со стороны СИМПР должна быть единица
 
             }

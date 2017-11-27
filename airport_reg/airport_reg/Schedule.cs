@@ -21,6 +21,8 @@ namespace airport_reg
             return true;
         }
 
+        
+
         //Переключение рейсов
         public void Switch()
         {
@@ -62,9 +64,29 @@ namespace airport_reg
         //Случайный рейс из списка
         public Flight RandomFlight()
         {
+            int i;
             Random rnd = new Random(DateTime.Now.Millisecond);
-            int i = rnd.Next(0, FlightList.Count);
-
+            //С вероятностью 0,9 генерируем пассажира на открытый рейс
+            double r = rnd.NextDouble();
+            int lastopen = FlightList.FindLastIndex(x => x.status == FlightStatus.RegistrationOpen);
+            //Нет рейса с открытой регистрацией
+            if(lastopen<0)
+            {
+                i = rnd.Next(0,FlightList.Count); // выдаём любой рейс
+            }
+            else
+            {
+                //открытый рейс
+                if(r>0.1)
+                {
+                    i = lastopen;
+                }
+                //опоздал
+                else
+                {
+                    i = rnd.Next(0, lastopen);
+                }
+            }
             return FlightList[i];
         }
         //Открыть регистрацию на рейс
