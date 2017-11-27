@@ -1,0 +1,8 @@
+D:\11sem\simpr_lab\airport_reg\airport_reg\bin\Release\airport_reg.exe.config
+D:\11sem\simpr_lab\airport_reg\airport_reg\bin\Release\airport_reg.exe
+D:\11sem\simpr_lab\airport_reg\airport_reg\bin\Release\airport_reg.pdb
+D:\11sem\simpr_lab\airport_reg\airport_reg\obj\Release\airport_reg.RegForm.resources
+D:\11sem\simpr_lab\airport_reg\airport_reg\obj\Release\airport_reg.Properties.Resources.resources
+D:\11sem\simpr_lab\airport_reg\airport_reg\obj\Release\airport_reg.csproj.GenerateResource.Cache
+D:\11sem\simpr_lab\airport_reg\airport_reg\obj\Release\airport_reg.exe
+D:\11sem\simpr_lab\airport_reg\airport_reg\obj\Release\airport_reg.pdb
