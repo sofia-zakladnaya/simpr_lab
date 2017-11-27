@@ -31,12 +31,12 @@ namespace airport_reg // не забудьте поменять на свой na
         uint simpr_cond;
         uint simpr_act;
         RegForm Win;
-        //int fc = 0; //счётчик рейсов(для теста)
+ 
 
         public MyHookClass(IntPtr hWnd, RegForm f)
         {
-            simpr_cond = 49824;//RegisterWindowMessage("MyMessage"); // регистрируем своё сообщение
-            simpr_act = 49833; //RegisterWindowMessage("MyMessage1");
+            simpr_cond = 49824; // регистрируем своё сообщение
+            simpr_act = 49833; 
             this.AssignHandle(hWnd);
             solver = new Airport();
             Win = f;
@@ -46,27 +46,25 @@ namespace airport_reg // не забудьте поменять на свой na
         protected override void WndProc(ref Message m) // в эту функцию приходят все сообщения от СИМПРА
         {
             
-            int /*wparamhi, */wparamlo, wparam, lParam;
+            int wparamlo, wparam, lParam;
             lParam = (int)m.LParam;
             wparam = (int)m.WParam;
-            //wparamhi = wparam >> 16;
+
             wparamlo = wparam & 0xffff;
             //проверка условий
             if (m.Msg == simpr_cond)
             {
-                //Win.Log("Проверка условия");
+
                 switch (wparamlo)
                 {
                     //Таблица 1
                     case 1:
                         {
-                           // Win.Log("Таблица 1 - проверка условий");
                             switch (lParam)
                             {
                                 //Все рейсы улетели?
                                 case 1:
                                 {
-                                   // Win.Log("Регистрация на все рейсы завершена?");
                                     if (Win.schedule.IsFinished())
                                     {
                                             Win.Log("------");
@@ -75,7 +73,6 @@ namespace airport_reg // не забудьте поменять на свой na
                                     }
                                     else
                                     {
-                                       // Win.Log("Не все рейсы улетели");
                                         m.Result = new IntPtr(0);
                                     }
                                     break;
@@ -90,13 +87,11 @@ namespace airport_reg // не забудьте поменять на свой na
                     //Таблица 2
                     case 2:
                         {
-                            //Win.Log("Таблица 2 - проверка условий");
                             switch (lParam)
                             {
                                 //Регистрация на рейс открыта?
                                 case 1:
                                     {
-                                        //Win.Log("Регистрация на рейс открыта?");
                                         if (Win.schedule.FlightList[solver.pass.Ticket.FlightNumber-1].IsOpen())
                                         {
                                             Win.Log("Регистрация открыта");
@@ -113,7 +108,6 @@ namespace airport_reg // не забудьте поменять на свой na
                                 //Рейс международный?
                                 case 2:
                                     {
-                                        //Win.Log("Рейс международный?");
                                         
                                         if (Win.schedule.FlightList[solver.pass.Ticket.FlightNumber - 1].IsInternational())
                                         {
@@ -130,7 +124,6 @@ namespace airport_reg // не забудьте поменять на свой na
                                 //Есть ручная кладь?
                                 case 3:
                                     {
-                                        //Win.Log("Есть ручная кладь?");
                                         if (solver.pass.HandLuggage)
                                         {
                                             Win.Log("Есть ручная кладь");
@@ -146,7 +139,6 @@ namespace airport_reg // не забудьте поменять на свой na
                                 //Билет с багажом?
                                 case 4:
                                     {
-                                        //Win.Log("Билет с багажом?");
                                         if (solver.pass.Ticket.WithBaggage)
                                         {
                                             Win.Log("Билет с багажом");
@@ -162,7 +154,6 @@ namespace airport_reg // не забудьте поменять на свой na
                                 //Есть багаж?
                                 case 5:
                                     {
-                                        //Win.Log("Есть багаж?");
                                         if (solver.pass.HaveBaggage())
                                         {
                                             Win.Log("Есть багаж");
@@ -178,7 +169,6 @@ namespace airport_reg // не забудьте поменять на свой na
                                 //Билет с перевозкой животных?
                                 case 6:
                                     {
-                                       // Win.Log("Билет с перевозкой животных?");
                                         if (solver.pass.Ticket.WithPets)
                                         {
                                             Win.Log("Билет с животными");
@@ -194,7 +184,6 @@ namespace airport_reg // не забудьте поменять на свой na
                                 //Есть животные?
                                 case 7:
                                     {
-                                        //Win.Log("Есть животные?");
                                         if (solver.pass.HavePet())
                                         {
                                             Win.Log("Есть животные");
@@ -214,13 +203,11 @@ namespace airport_reg // не забудьте поменять на свой na
                     //Таблица 3
                     case 3:
                         {
-                            //Win.Log("Таблица 3 - проверка условий");
                             switch (lParam)
                             {
                                 //Багаж хрупкий?
                                 case 1:
                                     {
-                                        //Win.Log("Багаж хрупкий?");
                                         if (solver.pass.Baggage.IsFragile())
                                         {
                                             Win.Log("Багаж хрупкий");
@@ -236,7 +223,7 @@ namespace airport_reg // не забудьте поменять на свой na
                                 //Есть животные?
                                 case 2:
                                     {
-                                        //Win.Log("Есть животные?");
+
                                         if (solver.pass.HavePet())
                                         {
                                             Win.Log("Есть животные");
@@ -256,13 +243,13 @@ namespace airport_reg // не забудьте поменять на свой na
                     //Таблица 4
                     case 4:
                         {
-                            //Win.Log("Таблица 4 - проверка условий");
+
                             switch (lParam)
                             {
                                 //Крупное?
                                 case 1:
                                     {
-                                        //Win.Log("Крупное?");
+
                                         if (solver.pass.Pet.IsBig())
                                         {
                                             Win.Log("Крупное животное");
@@ -278,7 +265,7 @@ namespace airport_reg // не забудьте поменять на свой na
                                 //Требуется успокоительное?
                                 case 2:
                                     {
-                                        //Win.Log("Требуется успокоительное?");                                       
+                                    
                                         if (solver.pass.Pet.IsTranquile())
                                         {
                                             Win.Log("Требуется успокоительное");
@@ -300,22 +287,18 @@ namespace airport_reg // не забудьте поменять на свой na
             //выполенение действий
             else if(m.Msg == simpr_act)
             {
-                //Win.Log("Выполение действия");
                 switch (wparamlo)
                 {
                     //Таблица 1
                     case 1:
                         {
-                            //Win.Log("Таблица 1 - действия");
                             switch (lParam)
                             {
                                 //Начать обслуживание пассажира
                                 case 1:
                                     {
-                                        //fc++;
-                                           
-                                        //Генерация пассажира
-                                        //Random rnd = new Random(DateTime.Now.Millisecond);
+                                       //Генерация пассажира
+                                        
                                         solver.PassCounter++; //Увеличиваем счётчик пассажиров
                                         //Выбираем случайный рейс
                                         
@@ -346,7 +329,7 @@ namespace airport_reg // не забудьте поменять на свой na
                     //Таблица 2
                     case 2:
                         {
-                            //Win.Log("Таблица 2 - действия");
+                           
                             switch (lParam)
                             {
                                 //Отправить в кассу для возврата/обмена билета
@@ -416,7 +399,7 @@ namespace airport_reg // не забудьте поменять на свой na
                     //Таблица 3
                     case 3:
                         {
-                            //Win.Log("Таблица 3 - действия");
+                            
                             switch (lParam)
                             {
                                 //Упаковать
@@ -459,7 +442,7 @@ namespace airport_reg // не забудьте поменять на свой na
                     //Таблица 4
                     case 4:
                         {
-                            //Win.Log("Таблица 4 - действия");
+                            
                             switch (lParam)
                             {
                                 //Дать успокоительное
